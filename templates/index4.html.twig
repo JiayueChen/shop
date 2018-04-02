@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Shopping</title>
+</head>
+<body>
+	<ul>
+		{% for item in result %}
+		<li>{{item.name | lower}}</li>
+		{% endfor %}
+	</ul>
+</body>
+</html>
