@@ -19,14 +19,7 @@ require_once('db.php');
   <title>Tina's Shop</title>
 
   <script type="text/javascript">
-      // $(document).ready(function(){
-      //   $('#btn').click(function(){
-      //     var i=count++;
-
-
-
-      //   });
-      // });
+     
     </script>
 
   </head>
@@ -46,11 +39,11 @@ require_once('db.php');
 
           <div class="col-4">
             <div class="card" style="width:18rem;">
-              <img class="card-img-top" src="<?php echo $val['image_url'] ?>" alt="Card image cap">
+              <img class="card-img-top" src="<?php echo $val->getImgUrl() ?>" alt="Card image cap">
               <div class="card-body">
                 <h5 class="card-title" style="min-height: 5rem">
                   <?php 
-                  echo $val['name'];
+                  echo $val->getName();
                   ?>
                 </h5>
 
@@ -58,7 +51,7 @@ require_once('db.php');
                   <b>
                     <span class="card-price">
                       <?php 
-                      echo $val['price'];
+                      echo $val->getPrice();
                       ?>
                     </span>
                   </b>
@@ -66,7 +59,7 @@ require_once('db.php');
                 <div class="text-right">
                   <button class="btn btn-success purchase" 
                   data-price="<?php 
-                  echo $val['price'];
+                  echo $val->getPrice;
                   ?>">
                   Purchase
                 </button>

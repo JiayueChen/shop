@@ -39,7 +39,7 @@ class DBConnection{
 			
 		}
 		//return index array of obj
-		return $result;
+		return $items;
 
 	}
 	

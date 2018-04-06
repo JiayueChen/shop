@@ -1,13 +1,81 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<title>Shopping</title>
 </head>
 <body>
-	<ul>
-		{% for item in result %}
-		<li>{{item.name | lower}}</li>
-		{% endfor %}
-	</ul>
+	
+	<div class="container">
+		<h1 class="text-center text-primary my-5">Welcome to Julia's Shop</h1>
+		<div class="row">
+			{% for item in result%}
+			<div class="col-4">
+				<div class="card" style="width: 18rem; max-width:100%">
+
+					<img class="card-img-top" src=" {{item.img_url}}" alt="Card image cap">
+					<div class="card-body" onmouseover="ShowDes({{item.description}})">
+						<h5 class="card-title" style="min-height: 5rem">
+							{{item.name}}
+						</h5>
+						<p class="des" style="height: 3rem">
+							
+						</p>
+						<p class="text-right text-primary">
+							<b>
+								{{item.price}}
+							</b>
+						</p>
+						<div class="text-right">
+							<button class="btn btn-success" onclick="AddPrice({{item.price}})">
+								Purchase
+							</button>
+							
+						</div>
+					</div>
+				</div>   
+			</div>
+
+
+			{% endfor %}
+			<div style="background-color: #ddd; color: #222; position:fixed; right: 2rem; bottom: 2rem; padding: 1rem 2.5rem; border-radius: 1rem">
+				Total: <span class="TotalPrice">0</span>
+				<div>
+					<button class="btn btn-info" onclick="NumofItem()">
+						Buy
+					</button>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+	<script type="text/javascript">
+		function AddPrice(price){
+			console.log(price);
+			var current_price = $('.TotalPrice').text();
+			$('.TotalPrice').text( (parseFloat(current_price) + parseFloat(price) ).toFixed(2) );
+
+		}
+		function NumofItem(){
+			console.log(product);
+
+		}
+		function ShowDes(des){
+			console.log(des);
+			$('.des').show(des);
+
+
+		}
+
+
+	</script>
 </body>
 </html>
