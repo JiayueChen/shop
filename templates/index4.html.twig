@@ -9,18 +9,21 @@
 <body>
 	
 	<div class="container">
-		<h1 class="text-center text-primary my-5">Welcome to Julia's Shop</h1>
+		<h1 class="text-center text-primary my-5">Welcome to {{name}}'s Shop</h1>
+		<div id="d" style="left:0px; ">
+			
+		</div>
 		<div class="row">
 			{% for item in result%}
 			<div class="col-4">
 				<div class="card" style="width: 18rem; max-width:100%">
-
-					<img class="card-img-top" src=" {{item.img_url}}" alt="Card image cap">
-					<div class="card-body" onmouseover="ShowDes({{item.description}})">
+					<!-- src 后面 imgUrl是item文件下get方法的名字，getImgUrl -->
+					<img class="card-img-top" src=" {{item.imgUrl}}" alt="Card image cap" data-description="{{item.description}}">
+					<div class="card-body" >
 						<h5 class="card-title" style="min-height: 5rem">
 							{{item.name}}
 						</h5>
-						<p class="des" style="height: 3rem">
+						<p class="des" style="">
 							
 						</p>
 						<p class="text-right text-primary">
@@ -38,12 +41,12 @@
 				</div>   
 			</div>
 
-
 			{% endfor %}
+
 			<div style="background-color: #ddd; color: #222; position:fixed; right: 2rem; bottom: 2rem; padding: 1rem 2.5rem; border-radius: 1rem">
 				Total: <span class="TotalPrice">0</span>
 				<div>
-					<button class="btn btn-info" onclick="NumofItem()">
+					<button class="btn btn-info" onclick="submitItem()">
 						Buy
 					</button>
 					
@@ -61,19 +64,31 @@
 		function AddPrice(price){
 			console.log(price);
 			var current_price = $('.TotalPrice').text();
-			$('.TotalPrice').text( (parseFloat(current_price) + parseFloat(price) ).toFixed(2) );
+			$('.TotalPrice').text((parseFloat(current_price) + parseFloat(price)).toFixed(2));
 
 		}
-		function NumofItem(){
-			console.log(product);
+		function submitItem(){
+			var submit = $('.TotalPrice').text();
+			console.log(submit);
+			.ajax({
+				url:'ajax.php',
+				type:'POST',
+				data:submit=>,
+				dataType: json
+
+			})
 
 		}
-		function ShowDes(des){
+
+		$('.card-img-top').mouseover(function(){
+			var des = $(this).data('description');
 			console.log(des);
-			$('.des').show(des);
+			$('#d').text(des);
+		})
 
 
-		}
+		
+
 
 
 	</script>
