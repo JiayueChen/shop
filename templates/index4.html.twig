@@ -10,9 +10,7 @@
 	
 	<div class="container">
 		<h1 class="text-center text-primary my-5">Welcome to {{name}}'s Shop</h1>
-		<div id="d" style="left:0px; ">
-			
-		</div>
+		
 		<div class="row">
 			{% for item in result%}
 			<div class="col-4">
@@ -43,6 +41,10 @@
 
 			{% endfor %}
 
+			<div id="d" style="position:fixed; left: 0; width: 20%; background-color: white">
+
+			</div>
+
 			<div style="background-color: #ddd; color: #222; position:fixed; right: 2rem; bottom: 2rem; padding: 1rem 2.5rem; border-radius: 1rem">
 				Total: <span class="TotalPrice">0</span>
 				<div>
@@ -62,29 +64,41 @@
 
 	<script type="text/javascript">
 		function AddPrice(price){
-			console.log(price);
+			//console.log(price);
 			var current_price = $('.TotalPrice').text();
 			$('.TotalPrice').text((parseFloat(current_price) + parseFloat(price)).toFixed(2));
 
 		}
-		function submitItem(){
-			var submit = $('.TotalPrice').text();
-			console.log(submit);
-			.ajax({
-				url:'ajax.php',
-				type:'POST',
-				data:submit=>,
-				dataType: json
-
-			})
-
-		}
+		
 
 		$('.card-img-top').mouseover(function(){
 			var des = $(this).data('description');
 			console.log(des);
 			$('#d').text(des);
 		})
+		$('.card-img-top').mouseout(function(){
+
+			$('#d').text('');
+		})
+
+
+		function submitItem(){
+			var submit=$('.TotalPrice').text();
+			console.log(submit);
+			$.ajax({
+				url:'ajax.php',
+				type:'POST',
+				data:{
+					julia:submit
+				},
+				dataType: 'json',
+				success: function(data){
+					alert(data.res);
+				}
+
+			})
+
+		}
 
 
 		

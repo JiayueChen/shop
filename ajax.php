@@ -1,6 +1,11 @@
 <?php 
-	if ($_POST['']) {
-		
+	if ($_POST['julia']) {
+		$response = array(
+			'res'=>'Purchase successful');
 	}
-	else
+	else {
+		$response = array(
+			'res'=>'Please add some items');
+	}
+	echo json_encode($response);
  ?>
