@@ -1,3 +1,3 @@
 # shop
 composer&amp;twig
-![wechat screenshot_20180409085153](https://user-images.githubusercontent.com/9360748/38498734-6614fbe0-3bd3-11e8-9887-88598a9bcefd.png)
+![wechat screenshot_20180409085350](https://user-images.githubusercontent.com/9360748/38498797-8dbcc362-3bd3-11e8-891a-6d042836fdfc.png)
